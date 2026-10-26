@@ -1,0 +1,9 @@
+build/bin
+node_modules
+frontend/out
+frontend/.next
+frontend/next-env.d.ts
+frontend/*.tsbuildinfo
+.DS_Store
+frontend/package.json.md5
+dist
