@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/urvichawla/Promptr/releases/latest"><b>⬇&nbsp; Download for Mac</b></a>
+  <a href="https://github.com/urvichawla/Promptr/releases/latest/download/Promptr.dmg"><b>⬇&nbsp; Download for Mac</b></a>
   &nbsp;·&nbsp; macOS 13 or later &nbsp;·&nbsp; Apple Silicon and Intel &nbsp;·&nbsp; Free
 </p>
 
@@ -41,7 +41,7 @@ You keep reusing the same prompts: a code review checklist, a debugging template
 
 ## Install
 
-1. **[Download the latest `Promptr-x.y.z.dmg`](https://github.com/urvichawla/Promptr/releases/latest)** and open it.
+1. **[Download Promptr.dmg](https://github.com/urvichawla/Promptr/releases/latest/download/Promptr.dmg)** and open it. (All versions are on the [Releases](https://github.com/urvichawla/Promptr/releases) page.)
 2. Drag **Promptr** onto the **Applications** folder.
 3. Open **Promptr** from Applications or Spotlight.
 4. If macOS says *"Apple could not verify Promptr"*: open **System Settings → Privacy & Security**, scroll down and click **Open Anyway** next to Promptr, then confirm. You only need to do this once.
@@ -221,8 +221,8 @@ Output:
 
 ```
 build/bin/Promptr.app            universal app (x86_64 + arm64)
-dist/Promptr-<version>.dmg       installer image
-dist/Promptr-<version>.dmg.sha256
+dist/Promptr.dmg                 installer image (same name every release, so the download link never changes)
+dist/Promptr.dmg.sha256          checksum, for your own verification
 ```
 
 The version comes from `info.productVersion` in `wails.json`. Bump it there before each release.
@@ -255,12 +255,12 @@ The script signs with the hardened runtime and a secure timestamp (both required
 
 ### Publishing a release
 
-Replace `1.3.1` with the version in `wails.json`:
+Replace `1.3.1` with the version in `wails.json`. Upload only `Promptr.dmg`, so visitors see a single installer and the README's download link keeps working:
 
 ```bash
 git tag v1.3.1
 git push origin v1.3.1
-gh release create v1.3.1 dist/Promptr-1.3.1.dmg dist/Promptr-1.3.1.dmg.sha256 --title "Promptr 1.3.1" --notes "See the README for install steps."
+gh release create v1.3.1 dist/Promptr.dmg --title "Promptr 1.3.1" --notes "Download Promptr.dmg, open it and drag Promptr to Applications. See the README for details."
 ```
 
 The README's download link always points to the latest release.
@@ -270,7 +270,7 @@ The README's download link always points to the latest release.
 Test on a Mac (or a fresh macOS user account) that has never had Promptr, Go, Node or Wails:
 
 - [ ] Download the DMG from the release page in Safari (so it gets the quarantine flag real users get)
-- [ ] `shasum -a 256 Promptr-<version>.dmg` matches the published `.sha256`
+- [ ] `shasum -a 256 Promptr.dmg` matches the sha256 GitHub shows next to the file on the release page
 - [ ] DMG opens and shows Promptr next to an Applications shortcut; drag to install
 - [ ] First launch: unsigned → **Open Anyway** works; notarized → opens with only the standard "downloaded from the internet" prompt
 - [ ] No Dock icon; menu bar icon appears; ⌃⌥P toggles the window

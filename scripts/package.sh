@@ -12,7 +12,7 @@ NOTARY_PROFILE="${NOTARY_PROFILE:-}"
 
 APP="build/bin/${APP_NAME}.app"
 DIST="dist"
-DMG="${DIST}/${APP_NAME}-${VERSION}.dmg"
+DMG="${DIST}/${APP_NAME}.dmg"
 
 export PATH="$PATH:$HOME/go/bin"
 export CGO_CFLAGS="-mmacosx-version-min=${MIN_MACOS}"
